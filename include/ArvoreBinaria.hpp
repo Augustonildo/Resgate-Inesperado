@@ -6,7 +6,6 @@ class ArvoreBinaria
         ArvoreBinaria();
         ~ArvoreBinaria();
         void Insere(char item);
-        void Caminha(int tipo);
         void Limpa();
 
     private:
