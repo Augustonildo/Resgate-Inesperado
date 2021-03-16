@@ -40,6 +40,30 @@ void ArvoreBinaria::ApagaRecursivo(Nodo *p){
     }
 }
 
+void ArvoreBinaria::CodificarCaractere(char caractere){
+    cout << "x";
+    CodificarCaractereRecursivo(caractere, raiz);
+}
+
+int NumeroAleatorio(bool par){
+    if(par){
+        return (2 * (rand() % 5));
+    }else{
+        return (2 * (rand() % 5)) + 1;
+    }
+}
+
+void ArvoreBinaria::CodificarCaractereRecursivo(char caractere, Nodo* p){
+    if(p->item == caractere) return;
+    if(caractere > p->item){
+        cout << NumeroAleatorio(true);
+        CodificarCaractereRecursivo(caractere, p->direita);
+    } else {  
+        cout << NumeroAleatorio(false);
+        CodificarCaractereRecursivo(caractere, p->esquerda);
+    }
+}
+
 char ArvoreBinaria::DecodificarMensagem(string mensagem){
     return DecodificarMensagemRecursivo(mensagem, raiz);
 }

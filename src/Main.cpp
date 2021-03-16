@@ -24,10 +24,10 @@ int main(int argc, char* argv[]) {
         }
         while(getline(arquivoComandos, linhaArquivo)){
             if(linhaArquivo[0] == 'C'){
-                cout << "C: " << linhaArquivo.substr(3) << endl;
                 for(unsigned int i = 3; i < linhaArquivo.length(); i++){
-                    
+                    arvoreTransliteracao.CodificarCaractere(linhaArquivo[i]);
                 }
+                cout << endl;
             }else if(linhaArquivo[0] == 'D'){
                 stream = istringstream(linhaArquivo.substr(4));
                 while(getline(stream, decodificacao, 'x')){
@@ -36,12 +36,10 @@ int main(int argc, char* argv[]) {
                 cout << endl;
             }
         }
-
         arquivoComandos.close();
     } else {
         cout << "Erro! Arquivo " << argv[1] << " não foi encontrado" << endl;
         return -1;
     }
-    
     return 0;
 }
