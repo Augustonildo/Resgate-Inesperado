@@ -11,8 +11,9 @@ int main(int argc, char* argv[]) {
     }
 
     ArvoreBinaria arvoreTransliteracao = ArvoreBinaria();
+    istringstream stream;
     ifstream arquivoComandos(argv[1]);
-    string linhaArquivo;
+    string linhaArquivo, codificacao, decodificacao;
 
     if(arquivoComandos.is_open()){
         getline(arquivoComandos, linhaArquivo);
@@ -23,15 +24,16 @@ int main(int argc, char* argv[]) {
         }
         while(getline(arquivoComandos, linhaArquivo)){
             if(linhaArquivo[0] == 'C'){
-                cout << linhaArquivo.substr(3) << endl;
+                cout << "C: " << linhaArquivo.substr(3) << endl;
                 for(unsigned int i = 3; i < linhaArquivo.length(); i++){
                     
                 }
             }else if(linhaArquivo[0] == 'D'){
-                cout << linhaArquivo.substr(3) << endl;
-                for(unsigned int i = 3; i < linhaArquivo.length(); i++){
-
+                stream = istringstream(linhaArquivo.substr(4));
+                while(getline(stream, decodificacao, 'x')){
+                    cout << arvoreTransliteracao.DecodificarMensagem(decodificacao);
                 }
+                cout << endl;
             }
         }
 
